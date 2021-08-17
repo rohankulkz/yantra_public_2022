@@ -53,6 +53,14 @@ public class driveSystems {
         return motor_powers;
     }
     public static double[] turnDrive(double x_turn_value){
+        
+        /*
+        This method takes an x value of a joystick and converts it into 4 motor powers for a quick and smooth rotation.
+        This method is recommended for teleOp as it takes a coordiate.
+        
+        
+        */
+        
      double[] motorValues = {x_turn_value,x_turn_value,x_turn_value,x_turn_value};
 
      return motorValues;
