@@ -84,7 +84,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AxesReference.
  */
 
 
-@TeleOp(name="ULTIMATEGOAL Vuforia Nav Webcam", group ="Concept")
+@TeleOp(name="Drive_Using_Navigational_Targest")
 @Disabled
 public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
 
@@ -100,6 +100,19 @@ public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
      * Once you've obtained a license key, copy the string from the Vuforia web site
      * and paste it in to your code on the next line, between the double quotes.
      */
+    //import neccesary hardware needed for drive
+    Hardware robot = new Hardware();
+    private ElapsedTime     runtime = new ElapsedTime();
+    static final double     FORWARD_SPEED = 0.6;
+    static final double     TURN_SPEED    = 0.5;
+
+
+
+
+
+
+
+
     private static final String VUFORIA_KEY =
             " --- YOUR NEW VUFORIA KEY GOES HERE  --- ";
 
@@ -128,6 +141,8 @@ public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
     private float phoneZRotate    = 0;
 
     @Override public void runOpMode() {
+        //initialize drive system variables
+        robot.init(hardwareMap)
         /*
          * Retrieve the camera we are to use.
          */
@@ -260,12 +275,37 @@ public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
         targetsUltimateGoal.activate();
         while (!isStopRequested()) {
 
-            // check all the trackable targets to see which one (if any) is visible.
+//            // check all the trackable targets to see which one (if any) is visible.
+//            targetVisible = false;
+//            for (VuforiaTrackable trackable : allTrackables) {
+//                if (((VuforiaTrackableDefaultListener)trackable.getListener()).isVisible()) {
+//                    telemetry.addData("Visible Target", trackable.getName());
+//                    targetVisible = true;
+//
+//
+//                    // getUpdatedRobotLocation() will return null if no new information is available since
+//                    // the last time that call was made, or if the trackable is not currently visible.
+//                    OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener)trackable.getListener()).getUpdatedRobotLocation();
+//                    if (robotLocationTransform != null) {
+//                        lastLocation = robotLocationTransform;
+//                    }
+//                    break;
+//                }
+//            }
+
+
+
+            // Look for a specific target
             targetVisible = false;
             for (VuforiaTrackable trackable : allTrackables) {
                 if (((VuforiaTrackableDefaultListener)trackable.getListener()).isVisible()) {
                     telemetry.addData("Visible Target", trackable.getName());
                     targetVisible = true;
+
+                    if trackable.getName()=="Blue Tower Goal Target"{
+
+                    }
+
 
                     // getUpdatedRobotLocation() will return null if no new information is available since
                     // the last time that call was made, or if the trackable is not currently visible.
