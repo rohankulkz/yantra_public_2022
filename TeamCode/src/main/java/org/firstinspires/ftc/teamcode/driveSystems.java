@@ -66,6 +66,39 @@ public class driveSystems {
      return motorValues;
     }
 
+    public static double[] turnDriveWithAngle(double angle_of_turn, double speed_of_turn){
+
+        /*
+        * This method takes an angle, and a speed, and returns the powers for the motors
+        * Method is optimal for autonomous code
+        * NOTE: Positive angle for clockwise rotation and negative angle for counterclockwise rotation (this may change with different motor configurations)
+        *
+        *
+        *
+        * */
+        
+
+
+        double[] motorValues = {0,0,0,0};
+
+        if (angle_of_turn > 0){
+            for (int i = 0; i < 4; i++) {
+                motorValues[i] = 1 * Math.abs(speed_of_turn);
+            }
+        }
+        else if(angle_of_turn < 0) {
+            for (int i = 0; i < 4; i++) {
+                motorValues[i] = -1 * Math.abs(speed_of_turn);
+            }
+        }
+        
+
+
+
+
+        return motorValues;
+    }
+
     public static double[] continousDriveWithAngle(double theta, double speed){
         /*
          * Method takes an angle and returns 4 motor powers from -1 to 1 to create a continuous mechanum drive
