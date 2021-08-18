@@ -168,7 +168,6 @@ public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
 
         // Make sure extended tracking is disabled for this example.
         parameters.useExtendedTracking = false;
-
         //  Instantiate the Vuforia engine
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
@@ -302,9 +301,10 @@ public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
                     telemetry.addData("Visible Target", trackable.getName());
                     targetVisible = true;
 
-                    if trackable.getName()=="Blue Tower Goal Target"{
-
-                    }
+//                    if trackable.getName()=="Blue Tower Goal Target"{
+//
+//
+//                    }
 
 
                     // getUpdatedRobotLocation() will return null if no new information is available since
