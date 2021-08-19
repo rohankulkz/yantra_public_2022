@@ -66,18 +66,27 @@ public class driveSystems {
      return motorValues;
     }
 
-    public static double[] turnDriveWithAngle(double angle_of_turn, double speed_of_turn){
+    public static double[] turnDriveWithAngle(double angle_of_turn){
 
         /*
         * This method takes an angle, and a speed, and returns the powers for the motors
         * Method is optimal for autonomous code
         * NOTE: Positive angle for clockwise rotation and negative angle for counterclockwise rotation (this may change with different motor configurations)
-        *
+        * NOTE: This method will soon remove the speed parameter, and speed will be calculated after inistialization based on the angle.
         *
         *
         * */
         
-
+        double speed_of_turn;
+        
+    //    if (Math.abs(angle_of_turn) >= 1){
+      //      speed_of_turn = 1
+        
+     //   }
+      //  else {
+        //    speed_of_turn
+            
+   //     }
 
         double[] motorValues = {0,0,0,0};
 
