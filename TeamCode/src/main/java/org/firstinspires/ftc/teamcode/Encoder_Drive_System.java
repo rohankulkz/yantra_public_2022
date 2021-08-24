@@ -36,14 +36,14 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 // This is a heavy modification of the encoder drive tempalte provided. This version will be much cleaner, and have methods that can be
-// used in other classes such as computer vision files or drive systems(prolly not needed for that, but is possible) effectively and efficiently
+// used in other classes effectively and efficiently
 
-@Autonomous(name="Modified_Autonomous_Encoder_DriveSystem")
-public class Modified_Autonomous_Encoder_DriveSystem extends LinearOpMode {
+@Autonomous(name="Encoder_Drive_System")
+public class Encoder_Drive_System extends LinearOpMode{
 
 
         * Declare OpMode members. */
-        Hardware         robot   = new Hardware();   // Use a Pushbot's hardware
+        Hardware robot   = new Hardware();   // Use a Pushbot's hardware
         public ElapsedTime     runtime = new ElapsedTime();
 
         static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
@@ -55,23 +55,24 @@ public class Modified_Autonomous_Encoder_DriveSystem extends LinearOpMode {
         static final double     TURN_SPEED              = 0.5;
 
 
-        public void PrepEncoders{
-
-                robot.init(hardwareMap);
+        public void ResetEncoders(){
                 robot.frontleftd.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                 robot.frontrightd.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                 robot.rearleftd.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                 robot.rearrightd.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        }
 
+        public void CurrentPos(){
+                double newfrontleftdTarget = robot.leftDrive.getCurrentPosition();
+                double newfrontrightdTarget = robot.rightDrive.getCurrentPosition();
+                double newrearleftdTarget = robot.rightDrive.getCurrentPosition();
+                double newrearrightdTarget = robot.rightDrive.getCurrentPosition();
 
-
-}
-
-        public void EncodeDrive(double speed, double inches){
+        }
+        public void EncoderDrive(double speed, double inches){
 
                 // init is a method you can find in the Hardware file. Activates motors and servos, puts them in correct settings for usage
 
-                robot.init(hardwareMap);
 
                 int newfrontleftdTarget;
                 int newfrontrightdTarget;
@@ -101,10 +102,8 @@ public class Modified_Autonomous_Encoder_DriveSystem extends LinearOpMode {
                 // loop to run motors now that motors are in correct settings and targets have been identified
                 while(robot.frontleftd.isBusy() || robot.frontrightd.isBusy() || robot.rearrleft.isBusy() || robot.rearright.isBusy()){
                         // Display it for the driver.
-                        telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
-                        telemetry.addData("Path2",  "Running at %7d :%7d",
-                                robot.leftDrive.getCurrentPosition(),
-                                robot.rightDrive.getCurrentPosition());
+                        telemetry.addData("Path1",  "Running to %7d :%7d  %7d: %7d", newfrontleftdTarget,  newfrontrightdTarget, newrearleftdTarget, newrearrightdTarget);
+                        telemetry.addData("Path2",  "Running at %7d :%7d  %7d: %7d", robot.frontlefd.getCurrentPosition(), robot.frontrightd.getCurrentPosition(), robot.rearleftd.getCurrentPosition(), robot.rearrightd.getCurrentPosition())
                         telemetry.update();
                 }
 
@@ -135,7 +134,3 @@ public class Modified_Autonomous_Encoder_DriveSystem extends LinearOpMode {
 
 
 
-    }
-
-
-}
