@@ -60,17 +60,17 @@ public class CoordinateSys extends LinearOpMode {
 
                 // up/down
 
-                mydrive.EncoderDrive(0.7,y_distance);
+                mydrive.EncoderDrive(0.7,y_distance*12);
 
                 // left/right
 
                 if (x_distance>0){
                         // code to turn right with gyroscope
-                        mydrive.EncoderDrive(0.7,x_distance);
+                        mydrive.EncoderDrive(0.7,x_distance*12);
 
                 }else {
                         //code to turn left with gyroscope
-                        mydrive.EncoderDrive(0.7,x_distance);
+                        mydrive.EncoderDrive(0.7,x_distance*12);
                 }
 
 
