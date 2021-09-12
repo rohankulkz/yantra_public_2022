@@ -100,6 +100,7 @@ public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
      * Once you've obtained a license key, copy the string from the Vuforia web site
      * and paste it in to your code on the next line, between the double quotes.
      */
+
     //import neccesary hardware needed for drive
     Hardware robot = new Hardware();
     private ElapsedTime     runtime = new ElapsedTime();
@@ -114,7 +115,7 @@ public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
 
 
     private static final String VUFORIA_KEY =
-            " --- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+            " AUrqe0b/////AAABmZV+GszjjkM3v7F6OEMqA60vXRB72mx2EgqDPMq5uU1R+9gJMnbQlic6pLyVZyZALHOpra/n9fevZFPdjnwSuIoRhp9DcaJd1gvb5doKkGQ+Q62/6xCYNlLdgIl4l6WvH94rql3z5ys20i2uBNyeESkh2WrfcsDD0UTrS47Pe2N25RNeBIVP7zQiCfvsRDwuWjfAgKbOzymttffXIVuPWa0DsyoXy6gWQ3+BcFrkBkdjJRWmZeuIFMw5q5Re4/9R1lcbOtb7e/hk+e885iFv5MKtpmAclmoQvypq2YJ7LmdEsY5/+I73pXiWFyzT+Mcu843rG6DlVaSE6PASwQ2C1lHPtcvWZUXMkT6kwmQnXJCe";
 
     // Since ImageTarget trackables use mm to specifiy their dimensions, we must use mm for all the physical dimension.
     // We will define some constants and conversions here
@@ -168,7 +169,6 @@ public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
 
         // Make sure extended tracking is disabled for this example.
         parameters.useExtendedTracking = false;
-
         //  Instantiate the Vuforia engine
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
@@ -302,9 +302,10 @@ public class ConceptVuforiaUltimateGoalNavigationWebcam extends LinearOpMode {
                     telemetry.addData("Visible Target", trackable.getName());
                     targetVisible = true;
 
-                    if trackable.getName()=="Blue Tower Goal Target"{
-
-                    }
+//                    if trackable.getName()=="Blue Tower Goal Target"{
+//
+//
+//                    }
 
 
                     // getUpdatedRobotLocation() will return null if no new information is available since
