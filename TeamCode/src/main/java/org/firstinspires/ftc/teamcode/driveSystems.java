@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class driveSystems {
 
     public driveSystems(){
@@ -76,7 +79,7 @@ public class driveSystems {
         *
         *
         * */
-        
+
 
 
         double[] motorValues = {0,0,0,0};
@@ -146,4 +149,37 @@ public class driveSystems {
 
         return motor_powers;
     }
+
+    public static List<double[]> auto_nav(double travel_angle, double speed, double distance, double turn_angle){
+
+        //This is a test program to see how exactly one would run a turn strafe and break up the commands.
+
+        List<double[]> motor_commands = new ArrayList<>();
+
+        double[] travel_motor = continousDriveWithAngle(travel_angle, speed);
+
+        double[] turn_motor = turnDriveWithAngle(turn_angle, speed);
+
+
+        //
+
+        double travel_time = distance/speed;
+
+        int num_of_steps = (int)travel_time;
+
+        for (int i = 0; i < num_of_steps*2; i++) {
+            if(i%2 == 0){
+                motor_commands.add(travel_motor);
+            }
+            else {
+                motor_commands.add(turn_motor);
+            }
+        }
+
+
+        return motor_commands;
+
+
+    }
+
 }
